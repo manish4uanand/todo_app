@@ -4,15 +4,15 @@ class TodoItemsController < ApplicationController
 
 	def create
 		@todo_item = @todo_list.todo_items.create todo_item_params
-
+		flash[:notice] = "Todo Item created successfuly."
 		redirect_to @todo_list
 	end
 
 	def destroy
 		if @todo_item.destroy
-			flash[:success] = "Todo List Item deleted successfuly."
+			flash[:notice] = "Todo List Item deleted successfuly."
 		else
-			flash[:error] = "Todo List Item coudn't be deleted."
+			flash[:notice] = "Todo List Item coudn't be deleted."
 		end
 		redirect_to @todo_list
 	end
